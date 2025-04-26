@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .game-box{
+            height: 50vh;
+            width: 25vw;
+            background-color: rgb(33, 37, 43);
+            margin: auto;
+            border-radius: 30px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            column-gap: 5px;
+            gap: 10px;
+            padding: 10px;
+            margin-top: 10%;
+            position: relative;
+        }
+        .item{
+            height: 110px;
+            width: 120px;
+            border-radius: 30px;
+            font-size: 80px;
+            background-color: rgb(121, 242, 255);
+            text-align: center;
+        }
+        .win-loss{
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.756);
+            height: 100%;
+            width: 100%;
+            border-radius: 30px;
+            visibility: hidden;
+            color: white;
+            text-align: center;
+        }
+        h1{
+            font-size: 60px;
+            margin-top: 20%;
+        }
+        img{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-box">
+        <div class="win-loss" id="win_loss">
+            <h1 class="power" id="pow_er"></h1>
+            <img onclick="reloadall()" src="https://cdn-icons-png.flaticon.com/512/9729/9729098.png" alt="path no show">
+        </div>
+        <div id="text1" onclick="display()" class="item"></div>
+        <div id="text2" onclick="display()" class="item"></div>
+        <div id="text3" onclick="display()" class="item"></div>
+        <div id="text4" onclick="display()" class="item"></div>
+        <div id="text5" onclick="display()" class="item"></div>
+        <div id="text6" onclick="display()" class="item"></div>
+        <div id="text7" onclick="display()" class="item"></div>
+        <div id="text8" onclick="display()" class="item"></div>
+        <div id="text9" onclick="display()" class="item"></div>
+    </div>
+    <script>
+        var flag = 0;
+        
+        function display(){
+            let space = event.target;
+            if(space.textContent != "")
+            return;
+            if(flag == 0){
+                space.textContent =`X`;
+                flag = 1;
+                }
+            else{
+                space.textContent = `O`;
+                flag = 0;
+                }
+
+
+            let a = document.getElementById("text1").textContent;
+            let b = document.getElementById("text2").textContent;
+            let c = document.getElementById("text3").textContent;
+            let d = document.getElementById("text4").textContent;
+            let e = document.getElementById("text5").textContent;
+            let f = document.getElementById("text6").textContent;
+            let g = document.getElementById("text7").textContent;
+            let h = document.getElementById("text8").textContent;
+            let i = document.getElementById("text9").textContent;
+                
+
+            if(checking(a, b, c)){
+               let k = document.getElementById("win_loss");
+               k.style.visibility = "visible";
+               document.getElementById("pow_er").textContent += a +` is Win`;
+            }
+            else if (checking(d, e, f)){
+                let k = document.getElementById("win_loss");
+                k.style.visibility = "visible";
+                document.getElementById("pow_er").textContent += d + ` is Win`;
+            }
+            else if (checking(g, h, i)){
+                let k = document.getElementById("win_loss");
+                k.style.visibility = "visible";
+                document.getElementById("pow_er").textContent += g + `You Win`;
+            }
+            else if (checking(a, d, g)){
+                let k = document.getElementById("win_loss");
+                k.style.visibility = "visible";
+                document.getElementById("pow_er").textContent += a + ` is Win`;
+            }
+            else if (checking(b, e, h)){
+                let k = document.getElementById("win_loss");
+                k.style.visibility = "visible";
+                document.getElementById("pow_er").textContent += b + ` is Win`;
+            }
+            else if (checking(c, f, i)){
+                let k = document.getElementById("win_loss");
+                k.style.visibility = "visible";
+                document.getElementById("pow_er").textContent += c + ` is Win`;
+            }
+            else if (checking(a, e, i)){
+                let k = document.getElementById("win_loss");
+                k.style.visibility = "visible";
+                document.getElementById("pow_er").textContent += a + ` is Win`;
+            }
+            else if (checking(c, e, g)){
+                let k = document.getElementById("win_loss");
+                k.style.visibility = "visible";
+                document.getElementById("pow_er").textContent += c + ` is Win`;
+            }
+            else if (a != "" && b != "" && c != "" && d != "" && e != "" && f != "" && g != "" && h != "" && i != "") {
+                let k = document.getElementById("win_loss");
+                k.style.visibility = "visible";
+                document.getElementById("pow_er").textContent = `match is draw`;
+            }
+            // else if (a != b && b != c && c != d && d != e && e != f && f != g && g != a) {
+            //     let k = document.getElementById("win_loss");
+            //     k.style.visibility = "visible";
+            //     document.getElementById("pow_er").textContent = `You loss`;
+            // }
+        }
+        function reloadall() {
+            location.reload();
+        }
+        function checking(x, y, z) {
+            return x != "" && x == y && y == z; 
+        }
+        
+    </script>
+</body>
+</html>
