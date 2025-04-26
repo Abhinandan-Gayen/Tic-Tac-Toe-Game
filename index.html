@@ -162,7 +162,17 @@
             // }
         }
         function reloadall() {
-            location.reload();
+            document.getElementById("text1").textContent = "";
+            document.getElementById("text2").textContent = "";
+            document.getElementById("text3").textContent = "";
+            document.getElementById("text4").textContent = "";
+            document.getElementById("text5").textContent = "";
+            document.getElementById("text6").textContent = "";
+            document.getElementById("text7").textContent = "";
+            document.getElementById("text8").textContent = "";
+            document.getElementById("text9").textContent = "";
+            let k = document.getElementById("win_loss");
+                k.style.visibility = "hidden";
         }
         function checking(x, y, z) {
             return x != "" && x == y && y == z; 
